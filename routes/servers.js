@@ -17,6 +17,28 @@ let pool;
 
 
 
+router.get('/', async (req, res) => {
+  const {team} =req.params;
+  try {
+    const [results] = await pool.execute(`SELECT * FROM Servers`);
+    if (results.length) {
+      res.send(results)
+    } else {
+      res
+          .status(404)
+          .send('there are no teams in the database')
+    }
+  } catch (e) {
+    res
+        .status(500)
+        .send('something went wrong!')
+  }
+});
+
+
+
+
+
 //@rout POST /appointment
 
 /*
