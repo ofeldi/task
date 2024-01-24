@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<head>
+    <!-- pbjs library-->
+    <script src="http://sdk.streamrail.com/media/prebid8.32.0.js"></script>
+
+    <!-- google library-->
+    <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+
+    <!-- google tag-->
+    <script>
+        window.googletag = window.googletag || { cmd: [] };
+        googletag.cmd.push(function(){
+            // Define an ad slot for div with id "banner-ad".
+            googletag
+                .defineSlot("/22685555940/LLC_300x250_2", [300, 250], "div-gpt-ad-1706016429842-0")
+                .addService(googletag.pubads());
+
+            // Enable the PubAdsService.
+            googletag.enableServices();
+        });
+    </script>
+
+    <!-- prebid wrapper & adapter-->
+    <link rel="icon" type="image/png"> <!-- href="/favicon.png">   -->
+    <script async src="http://www.googletagservices.com/tag/js/gpt.js"></script>
+    <script async src="http://cdn.jsdelivr.net/npm/prebid.js@latest/dist/not-for-prod/prebid.js"></script>
+    <script>
+        var div_1_sizes = [
+            [300, 250]
+        ];
+        var PREBID_TIMEOUT = 3000;
+        var FAILSAFE_TIMEOUT = 3000;
+
+        var adUnits = [
+            {
+                code: "/22685555940/LLC_300x250_2",
+                mediaTypes: {
+                    banner: {
+                        sizes: div_1_sizes
+                    }
+                },
+                bids: [{
+                    bidder: 'rise',
+                    params: {
+                        org: "6006bd365f7d48000117ecc9",
+                        testMode: true
+                    }
+                }]
+            }
+        ];
+
+        // ======== DO NOT EDIT BELOW THIS LINE =========== //
+        var googletag = googletag || {};
+        googletag.cmd = googletag.cmd || [];
+        googletag.cmd.push(function () {
+            googletag.pubads().disableInitialLoad();
+        });
+
+        var pbjs = pbjs || {};
+        pbjs.que = pbjs.que || [];
+
+        pbjs.que.push(function () {
+            pbjs.addAdUnits(adUnits);
+            pbjs.requestBids({
+                bidsBackHandler: initAdserver,
+                timeout: PREBID_TIMEOUT
+            });
+        });
+
+        function initAdserver() {
+            if (pbjs.initAdserverSet) return;
+            pbjs.initAdserverSet = true;
+            googletag.cmd.push(function () {
+                pbjs.que.push(function () {
+                    pbjs.setTargetingForGPTAsync();
+                    googletag.pubads().refresh();
+                });
+            });
+        }
+        // in case PBJS doesn't load
+        setTimeout(function () {
+            initAdserver();
+        }, FAILSAFE_TIMEOUT);
+
+    </script>
+
+
+</head>
+
+<body>
+
+    <h1>Prebid test page</h1>
+    <div id='div-gpt-ad-1706016429842-0' style='min-width: 300px; min-height: 250px;'>
+        <script>
+            googletag.cmd.push(function(){googletag.display('div-gpt-ad-1706016429842-0')})
+        </script>
+    </div>
+</body>
